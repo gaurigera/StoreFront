@@ -17,7 +17,7 @@ function Logo() {
 
 export default function MainHeader() {
   return (
-    <header className="w-full divide-y">
+    <header className="w-full divide-y sticky top-0 bg-white z-50">
       <div className="w-full flex justify-around items-center py-2">
         <Logo />
         <SearchInput />

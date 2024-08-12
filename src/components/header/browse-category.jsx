@@ -43,7 +43,7 @@ export default function BrowseCategory() {
                       <ListItem
                         key={category}
                         title={category}
-                        href={`category/${category}`}
+                        href={`/category/${category}`}
                       ></ListItem>
                     ))}
                   </ul>
@@ -51,7 +51,11 @@ export default function BrowseCategory() {
               </NavigationMenuItem>
             ) : (
               <NavigationMenuItem key={index}>
-                <Link href={`/${data[category]}`} legacyBehavior passHref>
+                <Link
+                  href={`/category/${data[category]}`}
+                  legacyBehavior
+                  passHref
+                >
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     {category}
                   </NavigationMenuLink>
