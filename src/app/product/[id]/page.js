@@ -14,6 +14,8 @@ import Review from "@/components/product/review";
 import { cn } from "@/lib/utils";
 import AddToCart from "@/components/product/add-to-cart";
 import BuyNow from "@/components/product/buy-now";
+import { Suspense } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default async function Product(parameters) {
   const result = await Fetch({
@@ -30,12 +32,16 @@ export default async function Product(parameters) {
               <CarouselContent className="max-w-[240px]">
                 {productDetails.images.map((image, index) => (
                   <CarouselItem className="w-fit aspect-square" key={index}>
-                    <Image
-                      width={400}
-                      height={400}
-                      src={image}
-                      alt={productDetails.title}
-                    />
+                    <Suspense
+                      fallback={<Skeleton className={"w-[240px] h-[240px]"} />}
+                    >
+                      <Image
+                        width={400}
+                        height={400}
+                        src={image}
+                        alt={productDetails.title}
+                      />
+                    </Suspense>
                   </CarouselItem>
                 ))}
               </CarouselContent>
