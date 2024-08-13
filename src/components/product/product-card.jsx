@@ -5,8 +5,8 @@ import { Discount, OriginalPrice } from "../ui/discount-price";
 
 export default async function ProductCard(productDetails) {
   return (
-    <Link href={`/product/${productDetails.id}`} target="_blank">
-      <div className="shadow p-1.5 group max-w-64 lg:max-w-56 flex flex-col items-center space-y-2">
+    <div className="shadow p-1.5 group max-w-64 lg:max-w-56 flex flex-col items-center space-y-2">
+      <Link href={`/product/${productDetails.id}`} target="_blank">
         <Image
           width={250}
           height={250}
@@ -36,8 +36,8 @@ export default async function ProductCard(productDetails) {
             )}
           </div>
         </div>
-        <AddToCart />
-      </div>
-    </Link>
+      </Link>
+      <AddToCart />
+    </div>
   );
 }
