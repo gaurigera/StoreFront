@@ -11,6 +11,9 @@ import Rating from "@/components/ui/rating";
 import { Discount, OriginalPrice } from "@/components/ui/discount-price";
 import { StoreIcon } from "lucide-react";
 import Review from "@/components/product/review";
+import { cn } from "@/lib/utils";
+import AddToCart from "@/components/product/add-to-cart";
+import BuyNow from "@/components/product/buy-now";
 
 export default async function Product(parameters) {
   const result = await Fetch({
@@ -20,32 +23,74 @@ export default async function Product(parameters) {
 
   return (
     <div className="flex w-full h-full pr-10 mt-10">
-      <div className="px-24 sticky top-24 h-fit">
-        {productDetails.images.length > 1 ? (
-          <Carousel>
-            <CarouselContent className="max-w-[240px]">
-              {productDetails.images.map((image, index) => (
-                <CarouselItem className="w-fit aspect-square" key={index}>
-                  <Image
-                    width={400}
-                    height={400}
-                    src={image}
-                    alt={productDetails.title}
-                  />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        ) : (
-          <Image
-            width={300}
-            height={300}
-            src={productDetails.images[0]}
-            alt={productDetails.title}
+      <div className="sticky top-24 h-fit">
+        <div className="px-24">
+          {productDetails.images.length > 1 ? (
+            <Carousel>
+              <CarouselContent className="max-w-[240px]">
+                {productDetails.images.map((image, index) => (
+                  <CarouselItem className="w-fit aspect-square" key={index}>
+                    <Image
+                      width={400}
+                      height={400}
+                      src={image}
+                      alt={productDetails.title}
+                    />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          ) : (
+            <Image
+              width={300}
+              height={300}
+              src={productDetails.images[0]}
+              alt={productDetails.title}
+            />
+          )}
+        </div>
+        <div className="border-2 p-4 rounded-lg mx-6 space-y-3">
+          <div className="space-y-0.5">
+            <h2 className="text-xl">Product Details</h2>
+            <hr />
+          </div>
+          <ProductDetail k={"Weight"} value={productDetails.weight} />
+          <div className="flex gap-2 text-sm">
+            <span className="font-bold">Dimensions</span>
+            <div className="space-x-1">
+              <span>{productDetails.dimensions.width}</span>
+              <span>x</span>
+              <span>{productDetails.dimensions.height}</span>
+              <span>x</span>
+              <span>{productDetails.dimensions.depth}</span>
+            </div>
+            gap
+          </div>
+          <ProductDetail
+            k={`Warranty Information`}
+            value={productDetails.warrantyInformation}
           />
-        )}
+          <ProductDetail
+            k={`Availability Status`}
+            value={productDetails.availabilityStatus}
+            className={cn(
+              "px-1 rounded-md",
+              productDetails.availabilityStatus === "In Stock"
+                ? "text-green-700 bg-green-200"
+                : "text-red-700 bg-red-400/10"
+            )}
+          />
+          <ProductDetail
+            k={`Warranty`}
+            value={productDetails.warrantyInformation}
+          />
+          <ProductDetail
+            k={`Return Policy`}
+            value={productDetails.returnPolicy}
+          />
+        </div>
       </div>
       <div className="flex-1 space-y-2">
         <div className="flex justify-between">
@@ -71,6 +116,12 @@ export default async function Product(parameters) {
           <Discount>{productDetails.discountPercentage}</Discount>
         </div>
         <GuaranteeSticker />
+        <div className="flex py-5 w-full">
+          <div className="ml-auto flex gap-4">
+            <AddToCart />
+            <BuyNow />
+          </div>
+        </div>
         <h2 className="text-2xl font-semibold">Reviews</h2>
         <div className="space-y-4 divide-y-2 divide-blue-50">
           {productDetails.reviews.map((review, index) => (
@@ -81,6 +132,15 @@ export default async function Product(parameters) {
     </div>
   );
 }
+
+const ProductDetail = ({ k, value, className }) => {
+  return (
+    <div className="flex gap-2 text-sm">
+      <span className="font-bold">{k}</span>
+      <span className={cn(className)}>{value}</span>
+    </div>
+  );
+};
 
 const GuaranteeSticker = () => {
   return (
