@@ -6,7 +6,7 @@ export default function Logo() {
     <Link href={`/`}>
       <div className="flex gap-2">
         <StoreIcon />
-        <h1 className="font-semibold">Store</h1>
+        <h1 className="font-semibold uppercase select-none">Store</h1>
       </div>
     </Link>
   );
