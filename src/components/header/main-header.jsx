@@ -1,4 +1,3 @@
-import SortByFilter from "../filter/sort-by";
 import BrowseCategory from "./browse-category";
 import TopHeader from "./top-header";
 
