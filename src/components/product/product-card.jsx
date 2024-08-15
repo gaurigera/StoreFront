@@ -36,7 +36,7 @@ export default async function ProductCard(productDetails) {
           </div>
         </div>
       </Link>
-      <AddToCart productDetails={productDetails} />
+      <AddToCart {...productDetails} />
     </div>
   );
 }

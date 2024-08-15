@@ -9,22 +9,38 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import CartItem from "./cart-item";
-import { Button } from "../ui/button";
 import { useCommerceStore } from "@/lib/providers/store-provider";
+import BuyNow from "../product/buy-now";
+import React from "react";
 
 export default function Modal({ children }) {
-  const { cartItems } = useCommerceStore((state) => state);
+  const { quantity, cartItems } = useCommerceStore((state) => state);
+  const amount = React.useRef(quantity);
+  const [open, setOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    if (amount.current !== quantity) {
+      if (!open) setOpen(true);
+      amount.current = quantity;
+    }
+  }, [quantity]);
 
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>{children}</SheetTrigger>
       <SheetContent className="w-screen lg:min-w-[662px]">
         <SheetHeader>
           <SheetTitle className="text-xl font-semibold">My Cart</SheetTitle>
         </SheetHeader>
         <div className="divide-y-2">
-          {cartItems.map((item, index) => {            
-            return <CartItem {...item} key={index} />;
+          {cartItems.map((item, index) => {
+            return (
+              <CartItem
+                key={index}
+                quantity={item.quantity}
+                item={item.product}
+              />
+            );
           })}
         </div>
         <SheetFooter>
@@ -32,7 +48,7 @@ export default function Modal({ children }) {
             <span>Total</span>
             <span>$8.99</span>
           </div>
-          <Button>Buy Now</Button>
+          <BuyNow />
         </SheetFooter>
       </SheetContent>
     </Sheet>

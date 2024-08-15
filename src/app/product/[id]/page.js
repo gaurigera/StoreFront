@@ -23,7 +23,7 @@ export default async function Product(parameters) {
   const productDetails = result.body;
 
   return (
-    <div className="flex w-full h-full pr-10 mt-10">
+    <div className="flex w-full h-full min-h-svh pr-10 mt-10">
       <div className="sticky top-24 h-fit">
         <div className="px-24">
           {productDetails.images.length > 1 ? (

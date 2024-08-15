@@ -1,13 +1,14 @@
 import { Cross1Icon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { QuantitySelector } from "./quantity-selector";
+import RemoveItem from "./remove-item";
 
-export default function CartItem(item) {
+export default function CartItem({ quantity, item }) {
   return (
     <div className="relative">
-      <button className="absolute w-fit p-1 rounded-full z-30 bg-black/15 dark:bg-white/35 -translate-x-1">
+      <RemoveItem item={item} key={item}>
         <Cross1Icon />
-      </button>
+      </RemoveItem>
       <div className="flex justify-between items-center my-3">
         <div className=" flex gap-1.5 items-center">
           <Image
@@ -23,7 +24,7 @@ export default function CartItem(item) {
           <span className="text-sm">${item.price}</span>
           <div className="flex border-2 rounded-xl items-center divide-x-2 space-x-1">
             <QuantitySelector type={"minus"} />
-            <span className="text-center p-3">{1}</span>
+            <span className="text-center p-3">{quantity}</span>
             <QuantitySelector type={"plus"} />
           </div>
         </div>
