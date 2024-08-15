@@ -13,8 +13,8 @@ export default function Review({
         <Rating className={`bg-blue-600`}>{rating}</Rating>
       </div>
       <div className="flex gap-3">
-        <span className="text-sm text-gray-800">{reviewerName}</span>
-        <a className="text-sm text-gray-800" href={`mailto:${reviewerEmail}`}>
+        <span className="text-sm">{reviewerName}</span>
+        <a className="text-sm" href={`mailto:${reviewerEmail}`}>
           {reviewerEmail}
         </a>
       </div>

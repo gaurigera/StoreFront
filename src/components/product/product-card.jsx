@@ -12,9 +12,8 @@ export default async function ProductCard(productDetails) {
           height={250}
           src={productDetails.thumbnail}
           alt={productDetails.title}
-          className="bg-white"
         />
-        <div className="group-hover:-translate-y-3 transform duration-300 ease-in-out bg-white p-2 w-full">
+        <div className="group-hover:-translate-y-3 transform duration-300 ease-in-out p-2 w-full">
           <div className="mx-auto w-fit">
             <p className="max-w-24 md:max-w-36 lg:max-w-44 overflow-hidden text-ellipsis text-nowrap">
               {productDetails.title}

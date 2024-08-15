@@ -1,3 +1,4 @@
+import { QuantitySelector } from "@/components/cart/quantity-selector";
 import ProductGrid from "@/components/product/grid";
 import { Fetch } from "@/lib/api/fetcher";
 
@@ -7,8 +8,10 @@ export default async function CategoryProducts(category) {
   });
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex flex-col items-center justify-between p-24">
       <ProductGrid {...result.body} />
+      <QuantitySelector type={"plus"} />
+      <QuantitySelector type={"minus"} />
     </main>
   );
 }
