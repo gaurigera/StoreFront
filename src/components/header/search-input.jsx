@@ -1,16 +1,16 @@
 "use client";
 
+import React from "react";
 import { SearchIcon } from "lucide-react";
 import { Input } from "../ui/input";
-import React from "react";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 export default function SearchInput() {
-  const [value, setValue] = React.useState("");
-
-  const router = useRouter();
   const searchParams = useSearchParams();
+  const [value, setValue] = React.useState("");
+  const router = useRouter();
+
   const createQueryString = React.useCallback(
     (name, value) => {
       const params = new URLSearchParams(searchParams.toString());

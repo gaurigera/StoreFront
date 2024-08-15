@@ -1,12 +1,9 @@
-export async function Fetch({ url, query, variables }) {
+export async function Fetch({ url, query }) {
   try {
     if (query)
       url =
         url +
-        new URLSearchParams({
-          q: query,
-        }).toString();
-    
+        new URLSearchParams(query).toString();
 
     const data = await fetch(url, {
       method: "GET",

@@ -7,11 +7,9 @@ export const metadata = {
 };
 
 export default async function SearchPage({ searchParams }) {
-  const q = searchParams?.q;
-  
   const products = await getProducts({
-    query: q || ''
-  });    
+    query: searchParams,
+  });
 
   return (
     <main className="flex flex-col items-center justify-between">

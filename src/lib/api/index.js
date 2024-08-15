@@ -9,11 +9,22 @@ export const getProduct = async (id) => {
   return result;
 };
 
-export const getProducts = async ({ query, reverse, sortKey }) => {  
+export const getProducts = async ({ query }) => {  
   const result = await Fetch({
     url: `${API}/search?`,
     query
   });
 
   return result
+};
+
+export const getProductsInCategory = async ({id, query, }) => {
+  console.log(query);
+  
+  const result = await Fetch({
+    url: `${API}/category/${id}?`,
+    query,
+  });
+
+  return result;
 };
