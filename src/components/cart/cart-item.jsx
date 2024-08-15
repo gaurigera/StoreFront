@@ -3,8 +3,6 @@ import Image from "next/image";
 import { QuantitySelector } from "./quantity-selector";
 
 export default function CartItem(item) {
-  const { productDetails } = item;
-
   return (
     <div className="relative">
       <button className="absolute w-fit p-1 rounded-full z-30 bg-black/15 dark:bg-white/35 -translate-x-1">
@@ -13,16 +11,16 @@ export default function CartItem(item) {
       <div className="flex justify-between items-center my-3">
         <div className=" flex gap-1.5 items-center">
           <Image
-            src={productDetails.thumbnail}
+            src={item.thumbnail}
             alt="Product Image"
             width={65}
             height={65}
             className="p-2 border-2 rounded-lg m-0.5"
           />
-          <h3 className="">{productDetails.title}</h3>
+          <h3 className="">{item.title}</h3>
         </div>
         <div className="flex flex-col gap-1 items-end">
-          <span className="text-sm">${productDetails.price}</span>
+          <span className="text-sm">${item.price}</span>
           <div className="flex border-2 rounded-xl items-center divide-x-2 space-x-1">
             <QuantitySelector type={"minus"} />
             <span className="text-center p-3">{1}</span>

@@ -123,8 +123,8 @@ export default async function Product(parameters) {
         <GuaranteeSticker />
         <div className="flex py-5 w-full">
           <div className="ml-auto flex gap-4">
-            <AddToCart />
-            <BuyNow />
+            <AddToCart {...productDetails} />
+            <BuyNow {...productDetails} />
           </div>
         </div>
         <h2 className="text-2xl font-semibold">Reviews</h2>

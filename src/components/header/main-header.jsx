@@ -7,7 +7,6 @@ export default function MainHeader() {
     <header className="w-full divide-y sticky top-0 z-50 bg-white dark:bg-black">
       <TopHeader />
       <BrowseCategory />
-      <SortByFilter />
     </header>
   );
 }

@@ -23,7 +23,7 @@ export default function Modal({ children }) {
           <SheetTitle className="text-xl font-semibold">My Cart</SheetTitle>
         </SheetHeader>
         <div className="divide-y-2">
-          {cartItems.map((item, index) => {
+          {cartItems.map((item, index) => {            
             return <CartItem {...item} key={index} />;
           })}
         </div>

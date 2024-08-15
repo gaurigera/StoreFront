@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 
 export default function AddToCart(productDetails) {
   const { addToCart } = useCommerceStore((state) => state);
-
+  
   return (
     <Button
       variant="outline"
