@@ -1,10 +1,24 @@
-import { createStore } from "zustand";
+"use client"
+
 import { immer } from "zustand/middleware/immer";
-import { persist } from "zustand/middleware";
+import { create } from "zustand";
+import { createJSONStorage, persist } from "zustand/middleware";
+
+export const asyncPersist = (config, options) => {
+  const { setItem, getItem, removeItem } = options.storage;
+
+  options.storage = {
+    setItem: async (...args) => setItem(...args),
+    getItem: async (...args) => getItem(...args),
+    removeItem: async (...args) => removeItem(...args),
+  };
+
+  return persist(config, options);
+};
 
 export const createCommerceStore = () => {
-  return createStore()(
-    persist(
+  return create(
+    asyncPersist(
       immer((set) => ({
         price: 0.0,
         quantity: 0,
@@ -52,6 +66,7 @@ export const createCommerceStore = () => {
       })),
       {
         name: "cart-storage",
+        storage: createJSONStorage(() => localStorage),
       }
     )
   );

@@ -14,12 +14,12 @@ import BuyNow from "../product/buy-now";
 import React from "react";
 
 export default function Modal({ children }) {
-  const { quantity, cartItems } = useCommerceStore((state) => state);
+  const { quantity, price, cartItems } = useCommerceStore((state) => state);
   const amount = React.useRef(quantity);
   const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
-    if (amount.current !== quantity) {
+    if (quantity && amount.current !== quantity) {
       if (!open) setOpen(true);
       amount.current = quantity;
     }
@@ -46,7 +46,7 @@ export default function Modal({ children }) {
         <SheetFooter>
           <div className="w-full flex justify-between">
             <span>Total</span>
-            <span>$8.99</span>
+            <span>${price}</span>
           </div>
           <BuyNow />
         </SheetFooter>
