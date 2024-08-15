@@ -16,11 +16,10 @@ import AddToCart from "@/components/product/add-to-cart";
 import BuyNow from "@/components/product/buy-now";
 import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { getProduct } from "@/lib/api";
 
 export default async function Product(parameters) {
-  const result = await Fetch({
-    url: `https://dummyjson.com/products/${parameters.params.id}`,
-  });
+  const result = await getProduct(parameters.params.id);
   const productDetails = result.body;
 
   return (

@@ -1,5 +1,13 @@
-export async function Fetch({ url }) {
+export async function Fetch({ url, query, variables }) {
   try {
+    if (query)
+      url =
+        url +
+        new URLSearchParams({
+          q: query,
+        }).toString();
+    
+
     const data = await fetch(url, {
       method: "GET",
       cache: "force-cache",

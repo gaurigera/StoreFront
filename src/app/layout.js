@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Store",
-  description: "An ecommerce app for the assignment of frontend engineer 1",
+  description: "An ecommerce app for browsing through data.",
 };
 
 export default function RootLayout({ children }) {
@@ -25,10 +25,10 @@ export default function RootLayout({ children }) {
           <CommerceStoreProvider>
             <MainHeader />
             {children}
-            <div className="absolute bottom-0 left-0 m-5">
-              <ModeToggle />
-            </div>
           </CommerceStoreProvider>
+          <div className="sticky bottom-2 left-0 m-5">
+            <ModeToggle />
+          </div>
         </ThemeProvider>
       </body>
     </html>
