@@ -1,6 +1,99 @@
-The project makes use of open-source API for fetching all kinds of product details.
+The project makes use of open-source [dummyjson](https://dummyjson.com/) API for fetching all kinds of product details.
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### What the project does? 
+This project is *the* full front-end template needed for anyone aiming to create an ecommerce website. 
+
+**Main functionalities**
+- 
+- _Responsive_ - takes care of all screens to provide good user experience.
+- _Robust state management_ - makes use of `Zustand` library state management of user's cart items.
+- _Persistence_ - makes use of browser's local storage to provide persistence for the user while they add items to cart.
+- _Reusability and modularity_ - it has been taken care that the components are properly seperated as per concerns to ensure easy editing.
+
+
+## Project Structure
+
+```
+|-- README.md
+|-- components.json
+|-- jsconfig.json
+|-- next.config.mjs
+|-- package-lock.json
+|-- package.json
+|-- postcss.config.mjs
+|-- public
+|   |-- next.svg
+|   `-- vercel.svg
+|-- src
+|   |-- app
+|   |   |-- category
+|   |   |   `-- [id]
+|   |   |       |-- layout.js
+|   |   |       `-- page.js
+|   |   |-- favicon.ico
+|   |   |-- globals.css
+|   |   |-- layout.js
+|   |   |-- loading.js
+|   |   |-- page.js
+|   |   |-- product
+|   |   |   `-- [id]
+|   |   |       |-- loading.js
+|   |   |       `-- page.js
+|   |   `-- search
+|   |       `-- page.js
+|   |-- components
+|   |   |-- cart
+|   |   |   |-- cart-item.jsx
+|   |   |   |-- modal.jsx
+|   |   |   |-- quantity-selector.jsx
+|   |   |   `-- remove-item.jsx
+|   |   |-- filter
+|   |   |   |-- filter-sidebar.jsx
+|   |   |   `-- sort-by.jsx
+|   |   |-- header
+|   |   |   |-- browse-category.jsx
+|   |   |   |-- cart-button.jsx
+|   |   |   |-- main-header.jsx
+|   |   |   |-- mobile-menu.jsx
+|   |   |   |-- search-input.jsx
+|   |   |   `-- top-header.jsx
+|   |   |-- product
+|   |   |   |-- add-to-cart.jsx
+|   |   |   |-- buy-now.jsx
+|   |   |   |-- grid.jsx
+|   |   |   |-- pagination.jsx
+|   |   |   |-- product-card.jsx
+|   |   |   `-- review.jsx
+|   |   |-- skeletons
+|   |   |   |-- product-card-skeleton.jsx
+|   |   |   `-- product-page-skeleton.jsx
+|   |   `-- ui
+|   |       |-- button.jsx
+|   |       |-- carousel.jsx
+|   |       |-- discount-price.jsx
+|   |       |-- dropdown-menu.jsx
+|   |       |-- empty-box.jsx
+|   |       |-- input.jsx
+|   |       |-- logo.jsx
+|   |       |-- navigation-menu.jsx
+|   |       |-- pagination.jsx
+|   |       |-- rating.jsx
+|   |       |-- sheet.jsx
+|   |       |-- skeleton.jsx
+|   |       |-- slider.jsx
+|   |       `-- theme-toggle.jsx
+|   `-- lib
+|       |-- api
+|       |   |-- fetcher.js
+|       |   `-- index.js
+|       |-- providers
+|       |   |-- store-provider.jsx
+|       |   |-- store.js
+|       |   `-- theme-provider.jsx
+|       |-- useStore.js
+|       `-- utils.js
+`-- tailwind.config.js
+```
 
 ## Getting Started
 
