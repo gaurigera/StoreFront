@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import Price from "./price";
 
 export const Discount = ({ children, className }) => {
   return <span className={cn("text-green-600", className)}>{children}%</span>;
@@ -6,9 +7,10 @@ export const Discount = ({ children, className }) => {
 
 export const OriginalPrice = ({ price, discount, className }) => {
   return (
-    <span className={cn(className, "line-through")}>
-      ${calculateOriginalPrice(price, discount)}
-    </span>
+    <Price
+      className={cn(className, "line-through")}
+      price={calculateOriginalPrice(price, discount)}
+    />
   );
 };
 

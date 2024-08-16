@@ -2,6 +2,7 @@ import { Cross1Icon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { QuantitySelector } from "./quantity-selector";
 import RemoveItem from "./remove-item";
+import Price from "../ui/price";
 
 export default function CartItem({ quantity, item }) {
   return (
@@ -21,7 +22,7 @@ export default function CartItem({ quantity, item }) {
           <h3 className="">{item.title}</h3>
         </div>
         <div className="flex flex-col gap-1 items-end">
-          <span className="text-sm">${item.price}</span>
+          <Price className="text-sm" price={item.price} />
           <div className="flex border-2 rounded-xl items-center divide-x-2 space-x-1">
             <QuantitySelector type={"minus"} item={item} />
             <span className="text-center p-3">{quantity}</span>

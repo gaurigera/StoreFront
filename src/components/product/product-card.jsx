@@ -2,6 +2,7 @@ import Image from "next/image";
 import AddToCart from "./add-to-cart";
 import Link from "next/link";
 import { Discount, OriginalPrice } from "../ui/discount-price";
+import Price from "../ui/price";
 
 export default async function ProductCard(productDetails) {
   return (
@@ -20,7 +21,7 @@ export default async function ProductCard(productDetails) {
             </p>
             {productDetails.discountPercentage > 0 ? (
               <div className="space-x-1">
-                <span className="font-semibold">${productDetails.price}</span>
+                <Price className="font-semibold" price={productDetails.price} />
                 <OriginalPrice
                   className={`text-xs`}
                   price={productDetails.price}

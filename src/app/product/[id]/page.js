@@ -17,6 +17,7 @@ import BuyNow from "@/components/product/buy-now";
 import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getProduct } from "@/lib/api";
+import Price from "../../../components/ui/price";
 
 export default async function Product(parameters) {
   const result = await getProduct(parameters.params.id);
@@ -71,7 +72,6 @@ export default async function Product(parameters) {
               <span>x</span>
               <span>{productDetails.dimensions.depth}</span>
             </div>
-            gap
           </div>
           <ProductDetail
             k={`Warranty Information`}
@@ -109,9 +109,10 @@ export default async function Product(parameters) {
         </div>
         <p>{productDetails.description}</p>
         <div className="flex gap-3 items-baseline">
-          <span className="text-2xl font-semibold">
-            ${productDetails.price}
-          </span>
+          <Price
+            className="text-2xl font-semibold"
+            price={productDetails.price}
+          />
           <span className="line-through">
             <OriginalPrice
               price={productDetails.price}

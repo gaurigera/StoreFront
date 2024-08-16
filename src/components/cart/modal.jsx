@@ -13,6 +13,7 @@ import { useCommerceStore } from "@/lib/providers/store-provider";
 import BuyNow from "../product/buy-now";
 import React from "react";
 import useStore from "@/lib/useStore";
+import Price from "../ui/price";
 
 export default function Modal({ children }) {
   const quantity = useStore(useCommerceStore, (state) => state.quantity);
@@ -51,7 +52,7 @@ export default function Modal({ children }) {
         <SheetFooter>
           <div className="w-full flex justify-between">
             <span>Total</span>
-            <span>${price && price.toFixed(2)}</span>
+            <Price price={price && price.toFixed(2)} />
           </div>
           <BuyNow />
         </SheetFooter>
