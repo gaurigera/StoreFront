@@ -5,8 +5,9 @@ import { SearchIcon } from "lucide-react";
 import { Input } from "../ui/input";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
-export default function SearchInput() {
+export default function SearchInput({ className }) {
   const searchParams = useSearchParams();
   const [value, setValue] = React.useState("");
   const router = useRouter();
@@ -29,7 +30,7 @@ export default function SearchInput() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-max-[250px] relative w-full lg:w-80"
+      className={cn("w-max-[250px] relative w-full md:w-80", className)}
     >
       <Input
         key={searchParams?.get("q")}

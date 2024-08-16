@@ -21,9 +21,9 @@ export default function SortByFilter() {
   );
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center gap-3">
       <h4 className="font-bold">Sort by: </h4>
-      <div className="flex gap-3 w-fit my-4 divide-x">
+      <div className="flex flex-col md:flex-row md:gap-3 w-fit md:my-4 md:divide-x">
         <SortByItem
           name={"Relevance"}
           active={searchParams.get("sortBy") === null}
@@ -60,7 +60,7 @@ const SortByItem = React.forwardRef(function SortByItem(
 ) {
   return (
     <button
-      className={cn({ underline: active }, "px-4")}
+      className={cn({ underline: active }, "md:px-4")}
       aria-label="sort by"
       ref={ref}
       {...props}

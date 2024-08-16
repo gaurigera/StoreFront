@@ -11,18 +11,16 @@ export const getProduct = async (id) => {
 
 export const getProducts = async ({ query }) => {  
   const result = await Fetch({
-    url: `${API}/search?`,
-    query
+    url: `${API}/search?select=id,title,discountPercentage,thumbnail,price&`,
+    query,
   });
 
   return result
 };
 
 export const getProductsInCategory = async ({id, query }) => {
-  console.log(query);
-  
   const result = await Fetch({
-    url: `${API}/category/${id}?`,
+    url: `${API}/category/${id}?select=id,title,discountPercentage,price,thumbnail&`,
     query,
   });
 

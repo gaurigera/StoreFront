@@ -23,8 +23,8 @@ export default async function Product(parameters) {
   const productDetails = result.body;
 
   return (
-    <div className="flex w-full h-full min-h-svh pr-10 mt-10">
-      <div className="sticky top-24 h-fit">
+    <div className="flex flex-col gap-3 md:flex-row w-full h-full min-h-svh pr-10 mt-10">
+      <div className="md:sticky md:top-24 h-fit">
         <div className="px-24">
           {productDetails.images.length > 1 ? (
             <Carousel>
@@ -97,7 +97,7 @@ export default async function Product(parameters) {
           />
         </div>
       </div>
-      <div className="flex-1 space-y-2">
+      <div className="px-12 md:px-0 md:flex-1 space-y-2">
         <div className="flex justify-between">
           <div className="flex gap-1.5">
             <h2 className="text-3xl">{productDetails.title}</h2>
