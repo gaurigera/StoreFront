@@ -23,12 +23,11 @@ export default function Modal({ children }) {
   const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
-    if (quantity && amount.current !== quantity) {
-      
+    if (amount.current !== quantity && quantity > 0) {
       if (amount.current != undefined && !open) setOpen(true);
       amount.current = quantity;
     }
-  }, [open, quantity, price]);
+  }, [open, quantity]);
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>

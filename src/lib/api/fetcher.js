@@ -5,6 +5,9 @@ export async function Fetch({ url, query }) {
         url +
         new URLSearchParams(query).toString();
 
+    console.log(url);
+    
+
     const data = await fetch(url, {
       method: "GET",
       cache: "force-cache",

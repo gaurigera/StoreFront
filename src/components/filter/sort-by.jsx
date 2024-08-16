@@ -9,12 +9,16 @@ export default function SortByFilter() {
   const router = useRouter();
   const pathname = usePathname();
 
-  const createQueryString = React.useCallback((key, value) => {
-    const params = new URLSearchParams();
-    params.set(key, value);
+  const createQueryString = React.useCallback(
+    (key1, key2, value1, value2) => {
+      const params = new URLSearchParams(searchParams);
+      params.set(key1, value1);
+      params.set(key2, value2);
 
-    return params.toString();
-  }, []);
+      return params.toString();
+    },
+    [searchParams]
+  );
 
   return (
     <div className="flex items-center">
@@ -32,10 +36,7 @@ export default function SortByFilter() {
           active={searchParams.get("order") === "asc"}
           onClick={() => {
             router.push(
-              "?" +
-                createQueryString("sortBy", "price") +
-                "&" +
-                createQueryString("order", "asc")
+              "?" + createQueryString("sortBy", "order", "price", "asc")
             );
           }}
         />
@@ -44,10 +45,7 @@ export default function SortByFilter() {
           active={searchParams.get("order") === "desc"}
           onClick={() => {
             router.push(
-              "?" +
-                createQueryString("sortBy", "price") +
-                "&" +
-                createQueryString("order", "desc")
+              "?" + createQueryString("sortBy", "order", "price", "desc")
             );
           }}
         />

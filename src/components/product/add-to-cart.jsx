@@ -10,7 +10,7 @@ export default function AddToCart(productDetails) {
     <Button
       variant="outline"
       onClick={() => {
-        addToCart(productDetails)
+        addToCart(productDetails, "plus")
       }}
     >
       Add to Cart

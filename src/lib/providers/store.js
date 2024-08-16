@@ -1,10 +1,11 @@
-"use client"
-
 import { immer } from "zustand/middleware/immer";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 export const asyncPersist = (config, options) => {
+  if (!options.storage) {
+    throw new Error("Undefined Storage!");
+  }
   const { setItem, getItem, removeItem } = options.storage;
 
   options.storage = {
@@ -23,7 +24,7 @@ export const createCommerceStore = () => {
         price: 0.0,
         quantity: 0,
         cartItems: [],
-        addToCart: (product) => {
+        addToCart: (product, type) => {
           set((state) => {
             if (!product) return;
             const { id } = product;
@@ -31,12 +32,24 @@ export const createCommerceStore = () => {
             const ind = state.cartItems.findIndex(
               (item) => item.product.id === id
             );
+            if (type === "plus") {
+              if (ind === -1) state.cartItems.push({ product, quantity: 1 });
+              else state.cartItems[ind].quantity += 1;
 
-            if (ind === -1) state.cartItems.push({ product, quantity: 1 });
-            else state.cartItems[ind].quantity += 1;
+              state.quantity += 1;
+              state.price += product.price;
+            } else {
+              if (ind === -1) return;
 
-            state.quantity += 1;
-            state.price += product.price;
+              if (state.cartItems[ind].quantity === 0) return;
+
+              if (state.cartItems[ind].quantity === 1)
+                state.removeFromCart(product);
+
+              state.cartItems[ind].quantity -= 1;
+              state.quantity -= 1;
+              state.price -= product.price;
+            }
           });
         },
         removeFromCart: (product) => {

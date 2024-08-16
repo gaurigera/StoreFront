@@ -1,10 +1,12 @@
 "use client";
 
+import { useCommerceStore } from "@/lib/providers/store-provider";
 import { cn } from "@/lib/utils";
 import { MinusIcon, PlusIcon } from "lucide-react";
-import { useFormState } from "react-dom";
 
-function SubmitButton({ type }) {
+function SubmitButton({ item, type }) {
+  const { addToCart } = useCommerceStore((state) => state);
+
   return (
     <button
       type="submit"
@@ -17,6 +19,9 @@ function SubmitButton({ type }) {
           "ml-auto": type === "minus",
         }
       )}
+      onClick={() => {
+        addToCart(item, type);
+      }}
     >
       {type === "plus" ? (
         <PlusIcon className="h-4 w-4 dark:text-neutral-500" />
@@ -27,29 +32,13 @@ function SubmitButton({ type }) {
   );
 }
 
-export function QuantitySelector({
-  item,
-  type,
-  optimisticUpdate,
-}) {
-  const [message, formAction] = useFormState(() => {}, null);
-//   const payload = {
-//     merchandiseId: item.merchandise.id,
-//     quantity: type === "plus" ? item.quantity + 1 : item.quantity - 1,
-//   };
-//   const actionWithVariant = formAction.bind(null, payload);
-
+export function QuantitySelector({ item, type, optimisticUpdate }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
-    <form
-      action={async () => {
-        // optimisticUpdate(payload.merchandiseId, type);
-        // await actionWithVariant();
-      }}
-    >
-      <SubmitButton type={type} />
-      <p aria-live="polite" className="sr-only" role="status">
-        {message}
-      </p>
+    <form onSubmit={handleSubmit}>
+      <SubmitButton type={type} item={item} />
     </form>
   );
 }

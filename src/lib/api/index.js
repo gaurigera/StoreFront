@@ -18,7 +18,7 @@ export const getProducts = async ({ query }) => {
   return result
 };
 
-export const getProductsInCategory = async ({id, query, }) => {
+export const getProductsInCategory = async ({id, query }) => {
   console.log(query);
   
   const result = await Fetch({

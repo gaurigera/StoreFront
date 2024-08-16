@@ -23,9 +23,9 @@ export default function CartItem({ quantity, item }) {
         <div className="flex flex-col gap-1 items-end">
           <span className="text-sm">${item.price}</span>
           <div className="flex border-2 rounded-xl items-center divide-x-2 space-x-1">
-            <QuantitySelector type={"minus"} />
+            <QuantitySelector type={"minus"} item={item} />
             <span className="text-center p-3">{quantity}</span>
-            <QuantitySelector type={"plus"} />
+            <QuantitySelector type={"plus"} item={item} />
           </div>
         </div>
       </div>
