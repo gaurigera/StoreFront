@@ -8,8 +8,8 @@ export default async function CategoryProducts({ params, searchParams }) {
   });
 
   return (
-    <main className="flex flex-col min-h-svh items-center justify-between">
+    <section className="flex flex-col items-center">
       <ProductGrid {...result.body} />
-    </main>
+    </section>
   );
 }

@@ -31,7 +31,7 @@ export const categoryData = {
 export default function BrowseCategory() {
   return (
     <>
-      <NavigationMenu className="mx-auto hidden md:flex">
+      <NavigationMenu className="mx-auto hidden lg:flex">
         <NavigationMenuList>
           {Object.keys(categoryData).map((category, index) => {
             return typeof categoryData[category] != "string" ? (
@@ -40,13 +40,13 @@ export default function BrowseCategory() {
                   {category}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                  <ul className="grid w-[400px] gap-3 p-4 grid-cols-2 lg:w-[600px]">
                     {categoryData[category].map((categry) => (
                       <ListItem
                         key={categry}
                         title={categry}
                         href={
-                          category === "Womens" || category === "Mens"
+                          category === "womens" || category === "mens"
                             ? `/category/${category}-${categry}`
                             : `${categry}`
                         }
@@ -63,7 +63,7 @@ export default function BrowseCategory() {
                   passHref
                 >
                   <NavigationMenuLink
-                    className={cn("capitalize", navigationMenuTriggerStyle())}
+                    className={cn("capitalize ", navigationMenuTriggerStyle())}
                   >
                     {category}
                   </NavigationMenuLink>
