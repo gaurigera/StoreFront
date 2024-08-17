@@ -14,12 +14,12 @@ export default function SearchInput({ className }) {
 
   const createQueryString = React.useCallback(
     (name, value) => {
-      const params = new URLSearchParams(searchParams.toString());
+      const params = new URLSearchParams();
       params.set(name, value);
 
       return params.toString();
     },
-    [searchParams]
+    []
   );
 
   const handleSubmit = (e) => {
@@ -38,7 +38,6 @@ export default function SearchInput({ className }) {
         className="text-md rounded-lg border bg-white px-4 py-2 text-black placeholder:text-neutral-500 md:text-sm dark:border-neutral-800 dark:bg-transparent dark:text-white dark:placeholder:text-neutral-400"
         onChange={(e) => setValue(e.target.value)}
         autoComplete="off"
-        defaultValue={searchParams?.get("q") || ""}
       />
       <div className="absolute right-0 top-0 mr-3 flex h-full items-center">
         <SearchIcon width={13} />

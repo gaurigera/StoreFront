@@ -31,7 +31,7 @@ export const categoryData = {
 export default function BrowseCategory() {
   return (
     <>
-      <NavigationMenu className="mx-auto hidden lg:flex">
+      <NavigationMenu className="mx-auto hidden xl:flex">
         <NavigationMenuList>
           {Object.keys(categoryData).map((category, index) => {
             return typeof categoryData[category] != "string" ? (
@@ -48,7 +48,7 @@ export default function BrowseCategory() {
                         href={
                           category === "womens" || category === "mens"
                             ? `/category/${category}-${categry}`
-                            : `${categry}`
+                            : `/category/${categry}`
                         }
                       />
                     ))}

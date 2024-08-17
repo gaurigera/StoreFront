@@ -20,6 +20,14 @@ export default function SortByFilter() {
     [searchParams]
   );
 
+  const resetQueryString = React.useCallback(() => {
+    const params = new URLSearchParams(searchParams);
+    params.delete("sortBy");
+    params.delete("order");
+
+    return params.toString();
+  }, [searchParams]);
+
   return (
     <div className="flex items-center gap-3">
       <h4 className="font-bold">Sort by: </h4>
@@ -28,7 +36,7 @@ export default function SortByFilter() {
           name={"Relevance"}
           active={searchParams.get("sortBy") === null}
           onClick={() => {
-            router.push(`${pathname}`);
+            router.push(`${pathname}?` + resetQueryString());
           }}
         />
         <SortByItem

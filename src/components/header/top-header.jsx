@@ -8,11 +8,11 @@ import { Menu } from "lucide-react";
 export default function TopHeader() {
   return (
     <div className={cn("w-full flex justify-around items-center py-2")}>
-      <MobileNav className={"lg:hidden"}>
-        <Menu className="lg:hidden" />
+      <MobileNav className={"xl:hidden"}>
+        <Menu className="xl:hidden" />
       </MobileNav>
       <Logo />
-      <SearchInput className={"hidden lg:flex"} />
+      <SearchInput className={"hidden xl:flex"} />
       <CartButton />
     </div>
   );
