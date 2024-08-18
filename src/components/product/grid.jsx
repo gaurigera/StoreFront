@@ -15,7 +15,7 @@ export default function ProductGrid(productData) {
       <ProductPagination totalPages={productData.total} />
     </section>
   ) : (
-    <section className="mx-auto md:flex justify-start items-center gap-10">
+    <section className="mx-auto md:flex justify-start items-center gap-10 min-h-screen">
       <EmptyBox />
       <p className="text-3xl">All Caught Up!</p>
     </section>

@@ -1,3 +1,4 @@
+import MainHeader from "@/components/header/main-header";
 import ProductGrid from "@/components/product/grid";
 import { getProducts } from "@/lib/api";
 
@@ -11,8 +12,11 @@ export default async function Home({ searchParams }) {
   });
 
   return (
-    <main className="flex flex-col items-center justify-between min-h-dvh">
-      <ProductGrid {...result.body} />
-    </main>
+    <>
+      <MainHeader />
+      <main className="flex flex-col items-center justify-between min-h-dvh">
+        <ProductGrid {...result.body} />
+      </main>
+    </>
   );
 }
