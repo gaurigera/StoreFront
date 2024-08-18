@@ -25,6 +25,7 @@ export default function SearchInput({ className }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     router.push("/search?" + createQueryString("q", value));
+    router.refresh()
   };
 
   return (
