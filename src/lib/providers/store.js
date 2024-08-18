@@ -2,24 +2,9 @@ import { immer } from "zustand/middleware/immer";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
-export const asyncPersist = (config, options) => {
-  if (!options.storage) {
-    throw new Error("Undefined Storage!");
-  }
-  const { setItem, getItem, removeItem } = options.storage;
-
-  options.storage = {
-    setItem: async (...args) => setItem(...args),
-    getItem: async (...args) => getItem(...args),
-    removeItem: async (...args) => removeItem(...args),
-  };
-
-  return persist(config, options);
-};
-
 export const createCommerceStore = () => {
   return create(
-    asyncPersist(
+    persist(
       immer((set) => ({
         price: 0.0,
         quantity: 0,
