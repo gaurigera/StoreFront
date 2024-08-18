@@ -1,3 +1,4 @@
+import { QUERY_LIMIT } from "@/app/page";
 import { Fetch } from "./fetcher";
 
 const API = `https://dummyjson.com/products`;
@@ -11,7 +12,9 @@ export const getProduct = async (id) => {
 
 export const getProducts = async ({ query }) => {  
   const result = await Fetch({
-    url: `${API}/search?select=id,title,discountPercentage,thumbnail,price,availabilityStatus&`,
+    url:
+      `${API}/search?select=id,title,discountPercentage,thumbnail,price,availabilityStatus&` +
+      `limit=${QUERY_LIMIT}&skip=${(query.page - 1 || 0) * QUERY_LIMIT}&`,
     query,
   });
 

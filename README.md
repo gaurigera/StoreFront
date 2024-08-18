@@ -1,7 +1,7 @@
 The project makes use of open-source [dummyjson](https://dummyjson.com/) API for fetching all kinds of product details.
 
 ### What the project does? 
-This project is *the* full front-end template needed for anyone aiming to create an ecommerce website. 
+This project is *the* full front-end template needed for anyone aiming to create an ecommerce website. This is the solution created for the ecommerce assignment given by Profile.fyi
 
 **Main functionalities**
 - 
@@ -34,12 +34,16 @@ This project is *the* full front-end template needed for anyone aiming to create
 |   |   |-- globals.css
 |   |   |-- layout.js
 |   |   |-- loading.js
+|   |   |-- login
+|   |   |   `-- page.js
 |   |   |-- page.js
 |   |   |-- product
 |   |   |   `-- [id]
+|   |   |       |-- layout.js
 |   |   |       |-- loading.js
 |   |   |       `-- page.js
 |   |   `-- search
+|   |       |-- layout.js
 |   |       `-- page.js
 |   |-- components
 |   |   |-- cart
@@ -67,21 +71,26 @@ This project is *the* full front-end template needed for anyone aiming to create
 |   |   |-- skeletons
 |   |   |   |-- product-card-skeleton.jsx
 |   |   |   `-- product-page-skeleton.jsx
-|   |   `-- ui
-|   |       |-- button.jsx
-|   |       |-- carousel.jsx
-|   |       |-- discount-price.jsx
-|   |       |-- dropdown-menu.jsx
-|   |       |-- empty-box.jsx
-|   |       |-- input.jsx
-|   |       |-- logo.jsx
-|   |       |-- navigation-menu.jsx
-|   |       |-- pagination.jsx
-|   |       |-- rating.jsx
-|   |       |-- sheet.jsx
-|   |       |-- skeleton.jsx
-|   |       |-- slider.jsx
-|   |       `-- theme-toggle.jsx
+|   |   |-- ui
+|   |   |   |-- button.jsx
+|   |   |   |-- carousel.jsx
+|   |   |   |-- discount-price.jsx
+|   |   |   |-- empty-box.jsx
+|   |   |   |-- input.jsx
+|   |   |   |-- logo.jsx
+|   |   |   |-- navigation-menu.jsx
+|   |   |   |-- pagination.jsx
+|   |   |   |-- price.jsx
+|   |   |   |-- rating.jsx
+|   |   |   |-- sheet.jsx
+|   |   |   |-- skeleton.jsx
+|   |   |   |-- slider.jsx
+|   |   |   |-- theme-toggle.jsx
+|   |   |   |-- toast.jsx
+|   |   |   |-- toaster.jsx
+|   |   |   `-- use-toast.js
+|   |   `-- user
+|   |       `-- login.jsx
 |   `-- lib
 |       |-- api
 |       |   |-- fetcher.js
