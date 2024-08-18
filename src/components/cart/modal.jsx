@@ -20,18 +20,8 @@ export default function Modal({ children }) {
   const price = useStore(useCommerceStore, (state) => state.price);
   const cartItems = useStore(useCommerceStore, (state) => state.cartItems);
 
-  const amount = React.useRef(quantity);
-  const [open, setOpen] = React.useState(false);
-
-  React.useEffect(() => {
-    if (amount.current !== quantity && quantity > 0) {
-      if (amount.current != undefined && !open) setOpen(true);
-      amount.current = quantity;
-    }
-  }, [open, quantity]);
-
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
+    <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
       <SheetContent className="w-screen lg:min-w-[662px]">
         <SheetHeader>
@@ -51,10 +41,13 @@ export default function Modal({ children }) {
         </div>
         <SheetFooter>
           <div className="w-full flex justify-between">
-            <span>Total</span>
+            <div className="space-x-1.5">
+              <span>Total</span>
+              <span className="text-xs">(quantity: {quantity})</span>
+            </div>
             <Price price={price && price.toFixed(2)} />
           </div>
-          <BuyNow />
+          <BuyNow className="w-full" />
         </SheetFooter>
       </SheetContent>
     </Sheet>

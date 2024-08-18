@@ -3,6 +3,7 @@ import Image from "next/image";
 import { QuantitySelector } from "./quantity-selector";
 import RemoveItem from "./remove-item";
 import Price from "../ui/price";
+import Link from "next/link";
 
 export default function CartItem({ quantity, item }) {
   return (
@@ -19,7 +20,9 @@ export default function CartItem({ quantity, item }) {
             height={65}
             className="p-2 border-2 rounded-lg m-0.5"
           />
-          <h3 className="">{item.title}</h3>
+          <Link href={`/product/${item.id}`}>
+            <h3>{item.title}</h3>
+          </Link>
         </div>
         <div className="flex flex-col gap-1 items-end">
           <Price className="text-sm" price={item.price * quantity} />

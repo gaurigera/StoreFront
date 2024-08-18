@@ -53,7 +53,7 @@ const ListItem = ({ category }) => {
               href={
                 category === "Womens" || category === "Mens"
                   ? `/category/${category}-${categry}`
-                  : `${categry}`
+                  : `/category/${categry}`
               }
             >
               <h2 className="pl-1.5 capitalize">{categry}</h2>

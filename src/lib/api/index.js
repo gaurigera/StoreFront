@@ -11,7 +11,7 @@ export const getProduct = async (id) => {
 
 export const getProducts = async ({ query }) => {  
   const result = await Fetch({
-    url: `${API}/search?select=id,title,discountPercentage,thumbnail,price&`,
+    url: `${API}/search?select=id,title,discountPercentage,thumbnail,price,availabilityStatus&`,
     query,
   });
 
@@ -20,7 +20,7 @@ export const getProducts = async ({ query }) => {
 
 export const getProductsInCategory = async ({id, query }) => {
   const result = await Fetch({
-    url: `${API}/category/${id}?select=id,title,discountPercentage,price,thumbnail&`,
+    url: `${API}/category/${id}?select=id,title,discountPercentage,price,thumbnail,availabilityStatus&`,
     query,
   });
 

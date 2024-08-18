@@ -7,7 +7,7 @@ import Price from "../ui/price";
 export default async function ProductCard(productDetails) {
   return (
     <div className="shadow p-1.5 group max-w-64 lg:max-w-56 flex flex-col items-center space-y-2">
-      <Link href={`/product/${productDetails.id}`} target="_blank">
+      <Link href={`/product/${productDetails.id}`}>
         <Image
           width={250}
           height={250}
@@ -37,7 +37,10 @@ export default async function ProductCard(productDetails) {
           </div>
         </div>
       </Link>
-      <AddToCart {...productDetails} />
+      <AddToCart
+        productDetails={productDetails}
+        disabled={productDetails.availabilityStatus === "Out of Stock"}
+      />
     </div>
   );
 }

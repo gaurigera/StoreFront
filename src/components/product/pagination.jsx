@@ -19,8 +19,6 @@ export function ProductPagination({ totalPages }) {
   const currentPage = Number(searchParams.get("page")) || 1;
   const maxPages = Math.ceil(totalPages / QUERY_LIMIT);
 
-  console.log(totalPages, maxPages);
-
   const createPageURL = (pageNumber) => {
     const params = new URLSearchParams(searchParams);
     params.set("page", pageNumber.toString());

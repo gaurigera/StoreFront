@@ -1,5 +1,4 @@
-import { ProductPagination } from "@/components/product/pagination";
-import ProductCard from "@/components/product/product-card";
+import ProductGrid from "@/components/product/grid";
 import { getProducts } from "@/lib/api";
 
 export const QUERY_LIMIT = 12;
@@ -12,13 +11,8 @@ export default async function Home({ searchParams }) {
   });
 
   return (
-    <main className="flex flex-col items-center justify-between">
-      <section className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 lg:gap-7">
-        {result.body.products.map((product, index) => {
-          return <ProductCard key={index} {...product} />;
-        })}
-      </section>
-      <ProductPagination totalPages={result.body.total} />
+    <main className="flex flex-col items-center justify-between min-h-dvh">
+      <ProductGrid {...result.body} />
     </main>
   );
 }

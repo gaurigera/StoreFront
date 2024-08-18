@@ -8,7 +8,7 @@ export default async function CategoryProducts({ params, searchParams }) {
   });
 
   return (
-    <section className="flex flex-col items-center">
+    <section className="flex flex-col items-center justify-between">
       <ProductGrid {...result.body} />
     </section>
   );
