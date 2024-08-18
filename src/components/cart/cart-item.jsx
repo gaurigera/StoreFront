@@ -22,7 +22,7 @@ export default function CartItem({ quantity, item }) {
           <h3 className="">{item.title}</h3>
         </div>
         <div className="flex flex-col gap-1 items-end">
-          <Price className="text-sm" price={item.price} />
+          <Price className="text-sm" price={item.price * quantity} />
           <div className="flex border-2 rounded-xl items-center divide-x-2 space-x-1">
             <QuantitySelector type={"minus"} item={item} />
             <span className="text-center p-3">{quantity}</span>
